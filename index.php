@@ -67,6 +67,8 @@
 
 	function ivssn_admin_menu(){
 		add_menu_page("IV USA SSN","IV USA SSN",'manage_options','ivssn_configuration','ivssn_configuration');
+		add_submenu_page("ivssn_configuration","Verified Users","Verified Users",'manage_options','iv_usa_ssn_verified_users','iv_usa_ssn_verified_users');
+		add_submenu_page("ivssn_configuration","Non-Verified Users","Non-Verified Users",'manage_options','iv_usa_ssn_non_verified_users','iv_usa_ssn_non_verified_users');
 	}
 
 	function ivssn_configuration(){
@@ -87,7 +89,23 @@
 	}
 
 
+	// Verified Users List
+	function iv_usa_ssn_verified_users(){
+		global $wpdb;
+		$usertype='Verified Users';
+		$type_users="Verified Mobiles";
+		$verified_users=$wpdb->get_results("select * from ivssn_verified_users where is_verified='1'");
+		include("verified_users.php");
+	}
 
+
+	// Non Verified Users List
+	function iv_usa_ssn_non_verified_users(){
+		global $wpdb;
+		$usertype='Non-Verified Users';
+		$verified_users=$wpdb->get_results("select * from ivssn_verified_users where is_verified='0'");
+		include("verified_users.php");
+	}
 	// Front End
 
 	function ivssn_verification(){
@@ -157,14 +175,14 @@
 
 	function verify_ssn(){
 		global $wpdb;
-		$auth_url='http://staging-api.identityverification.com/get_verified/get_auth_token/';
+		$auth_url='https://api.identityverification.com/get_verified/get_auth_token/';
 		$configurations=$wpdb->get_results("select * from ".$wpdb->prefix."ivssn_configurations");
 		$config_credentails['client_id']=$configurations[0]->client_id;
 		$config_credentails['client_secret']=$configurations[0]->client_secret;
 		
 		$response=ivssn_sendPostData_api($auth_url,json_encode($config_credentails));
 
-		$usa_ssn_url='http://staging-api.identityverification.com/get_verified/usa_ssn/';
+		$usa_ssn_url='https://api.identityverification.com/get_verified/usa_ssn/';
 		
 		$config_data=array(
 						'auth_token'=>$response->auth_token,
