@@ -1,5 +1,6 @@
 === Identity Verification USA SSN ===
 Contributors: IdentityVerification
+Donate link: https://identityverification.com/
 authentication, security
 Requires at least: 3.9
 Tested up to: 4.2-alpha
