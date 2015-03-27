@@ -2,6 +2,7 @@
 
 	/**
 	* Plugin Name: Identity Verification US SSN
+	* Plugin URI: https://profiles.wordpress.org/identity-verification-services
 	* Description: With this API you can verify a valid user address as well as the identity.The verification requires the user to complete the total information that uniquely matches the Social Security Number in order to be verified.
 	* Author: Identity Verification Services
 	* Author URI: https://profiles.wordpress.org/identity-verification-services
