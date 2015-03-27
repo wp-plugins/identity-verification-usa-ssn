@@ -1,5 +1,5 @@
 === Identity Verification USA SSN ===
-Contributors: Identity-Verification-Services
+Contributors: identity-verification-services
 Donate link: https://identityverification.com/
 authentication, security
 Requires at least: 3.9
