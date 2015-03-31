@@ -143,6 +143,11 @@
 	add_action('wp_enqueue_scripts',"ivssn_scripts");
 	function ivssn_scripts(){
 		wp_enqueue_script('jquery');
+		?>
+<script>
+	var site_url='<?php echo site_url()?>'
+</script/>
+	<?php
 		wp_register_script("ivssn_scripts",plugins_url("ivssn_scripts/ivssn_scripts.js",__FILE__));
 		wp_enqueue_script("ivssn_scripts");
 	}
