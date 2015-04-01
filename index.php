@@ -11,11 +11,7 @@
 
 	// Activation Block
 	register_activation_hook(__FILE__,"ivssn_activation");
-?>
-<script type="text/javascript">
-	var present_url='<?php echo $_SERVER['REQUEST_URI']?>';
-</script>
-<?php
+
 	
 	function ivssn_activation(){
 
